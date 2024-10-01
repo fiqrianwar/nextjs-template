@@ -11,8 +11,6 @@ const Layouts = ({
 }>) => {
   const { isSmallDevice } = useMediaQuery();
 
-  console.log(isSmallDevice);
-
   return !isSmallDevice ? <Website>{children}</Website> : <Mobile />;
 };
 
