@@ -1,5 +1,7 @@
-import React from "react";
+"use client";
+import { Provider } from "react-redux";
 import { Layouts } from "./components/layouts";
+import { store } from "./redux/store/store";
 
 const App = ({
   children,
@@ -7,9 +9,9 @@ const App = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <div>
+    <Provider store={store}>
       <Layouts>{children}</Layouts>
-    </div>
+    </Provider>
   );
 };
 
