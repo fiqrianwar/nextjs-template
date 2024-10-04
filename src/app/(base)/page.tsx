@@ -2,11 +2,15 @@
 import { setUser } from "@/redux/features/users/userSlices";
 import { RootState } from "@/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
+import { useGetPokemonByNameQuery } from "@/services/pokemon/pokemon";
 
 export default function Home() {
   const dispatch = useDispatch();
 
   const user = useSelector((state: RootState) => state.userReducer);
+
+  const { data } = useGetPokemonByNameQuery("bulbasaur");
+  console.log(data);
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
