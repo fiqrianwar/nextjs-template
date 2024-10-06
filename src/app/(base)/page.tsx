@@ -1,5 +1,5 @@
 "use client";
-import { setUser } from "@/redux/features/users/userSlices";
+import { setUser, clearUser } from "@/redux/features/users/userSlices";
 import { RootState } from "@/redux/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetPokemonByNameQuery } from "@/services/pokemon/pokemon";
@@ -7,7 +7,7 @@ import { useGetPokemonByNameQuery } from "@/services/pokemon/pokemon";
 export default function Home() {
   const dispatch = useDispatch();
 
-  const user = useSelector((state: RootState) => state.userReducer);
+  const user = useSelector((state: RootState) => state.user);
 
   const { data } = useGetPokemonByNameQuery("bulbasaur");
   console.log(data);
@@ -27,6 +27,12 @@ export default function Home() {
           }
         >
           Update User
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => dispatch(clearUser())}
+        >
+          Clear User
         </button>
 
         <h2>{user.email}</h2>

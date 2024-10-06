@@ -1,7 +1,8 @@
 "use client";
 import { Provider } from "react-redux";
 import { Layouts } from "./components/layouts";
-import { store } from "./redux/store/store";
+import { persistor, store } from "./redux/store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const App = ({
   children,
@@ -10,7 +11,9 @@ const App = ({
 }>) => {
   return (
     <Provider store={store}>
-      <Layouts>{children}</Layouts>
+      <PersistGate loading={null} persistor={persistor}>
+        <Layouts>{children}</Layouts>
+      </PersistGate>
     </Provider>
   );
 };
